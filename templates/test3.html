@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--    폰트적용-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+
+
+    <!--    bulma css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+
+    <title>웹툰 리뷰 리스트</title>
+
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+            /*font-family: 'Song Myung', serif;*/
+            /*font-family: 'Stylish', sans-serif;*/
+            /*font-family: 'Noto Serif KR', serif;*/
+        }
+
+        .header {
+            background-color: #fffff0;
+            height: 150px;
+            width: 100%;
+            padding: 30px;
+
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 70px;
+            width: 210px;
+
+            background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzgtMQ%2FbtrIMB3TwL4%2FIVUalneeG7NlpFHwLeqkb1%2Fimg.png');
+            background-position: center;
+            background-size: 210px 70px;
+
+        }
+
+        #profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #profile > span {
+            margin-right: 50px;
+        }
+
+
+        /*header {*/
+        /*    background: #fffff0;*/
+        /*    height: 200px;*/
+        /*}*/
+
+        /*.header_img {*/
+        /*    !*background-color: aqua;*!*/
+        /*    width: 210px;*/
+        /*    height: 70px;*/
+        /*    margin-left: 40px;*/
+        /*    margin-top: 40px;*/
+        /*    display: inline-block;*/
+        /*}*/
+
+        /*.header_box {*/
+        /*    float: right;*/
+        /*}*/
+
+        /*.nav-item {*/
+        /*    float: left;*/
+        /*    font-size: 20px;*/
+        /*    margin-top: 40px;*/
+        /*    display: inline-block;*/
+        /*}*/
+
+        /*.btn1 {*/
+        /*    margin-top: 47px;*/
+        /*    margin-right: 20px;*/
+        /*    width: 120px;*/
+        /*    height: 30px;*/
+        /*    font-size: 19px;*/
+        /*}*/
+
+
+        .main {
+            background: #fffff0;
+            padding-top: 100px;
+        }
+
+        .main-container {
+            width: 90%;
+            height: 100%;
+            margin: 100px auto 0px auto;
+            background-color: white;
+            box-shadow: 0px 0px 3px 0px gray;
+            background-clip: padding-box;
+        }
+
+        .main_img {
+            display: grid;
+            width: 1700px;
+            /*max-width: 2500px;*/
+            /*width: 95%;*/
+            /*background-color: #4e342e;*/
+            margin: 60px auto 0px auto;
+            grid-template-columns: 5fr 7fr 5fr;
+            /*position: relative;*/
+            /*top: 3%;*/
+            transition: all 0.2s linear;
+        }
+
+        .main_img:hover img{}
+
+        .item1 {
+            /*background-color: #8d6e63;*/
+            text-align: center;
+            display: flex;
+            justify-content: center
+            transition: all 0.2s linear;
+        }
+        .item1:hover img {
+            transform: scale(1.1);
+        }
+
+        .item2 {
+            /*background-color: coral;*/
+            position: relative;
+            justify-content: flex-end;
+
+
+        }
+
+        .item3 {
+            /*background-color: yellow;*/
+        }
+
+
+        .img-thumbnail {
+            max-width: 1000px;
+            width: 90%;
+            /*height: 325px;*/
+            object-fit: cover;
+            /*margin-left: 20px;*/
+            /*position: relative;*/
+            /*top: -3%;*/
+            /*display: block;*/
+        }
+
+
+        .text_box1 {
+            /*background-color: #bcaaa4;*/
+            width: 90%;
+            height: 40px;
+            margin: auto;
+            position: relative;
+            top: 5%;
+            line-height: 200px;
+        }
+
+        .text_box2 {
+            /*background-color: wheat;*/
+            width: 90%;
+            height: 100px;
+            margin: auto;
+            position: relative;
+            top: 15%;
+            line-height: 200px;
+        }
+
+        .QW {
+            /*background-color: salmon;*/
+            width: 90%;
+            height: 40px;
+            margin: auto;
+            position: relative;
+            top: 30%;
+            line-height: 200px;
+        }
+
+        .wtbutton {
+            /*background-color: antiquewhite;*/
+            width: 40%;
+            height: 50px;
+            position: relative;
+            top: 38%;
+            margin-right: 10px;
+
+        }
+
+        .text_1 {
+            font-weight: bold;
+            font-size: 35px;
+
+
+        }
+
+        .text_2 {
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        .text_3 {
+            font-weight: bold;
+            font-size: 35px;
+        }
+
+        .review_container {
+            max-width: 1500px;
+            width: 90%;
+            margin: 50px auto 0px auto;
+            position: relative;
+            /*background-color: steelblue;*/
+        }
+
+        .btn1 {
+            /*border-radius: 7px;*/
+        }
+
+        .button {
+            float: right;
+            box-shadow: 0px 0px 3px 0px gray;
+            background-clip: padding-box;
+            margin-right: 42px;
+            border-radius: 7px;
+
+        }
+
+        .btn3 {
+            display: block;
+            position: relative;
+            margin-left: 30px;
+            top: 40%;
+            border-radius: 7px;
+        }
+
+        .btn {
+            display: block;
+            position: relative;
+            top: 30px;
+            margin: auto;
+            border-radius: 7px;
+        }
+
+        .card-body {
+            margin-top: 20px;
+        }
+
+        .review_1 {
+            font-size: 30px;
+            font-weight: bold;
+
+        }
+
+        .review_2 {
+
+        }
+
+        .review_3 {
+            font-weight: bolder
+
+        }
+
+        .review_4 {
+            float: right;
+            font-weight: bolder
+        }
+
+        .card-body {
+            border-radius: 20px;
+            box-shadow: 0px 0px 2px 0px gray;
+            border-style: groove;
+            border-width: 1px;
+
+        }
+
+        .box {
+            margin-top: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 2px 0px gray;
+            border-style: groove;
+            border-width: 1px;
+        }
+        .box_text1 {
+            font-size: 25px;
+            font-weight: bolder
+        }
+
+        .small3 {
+            float: right;
+        }
+
+
+
+    </style>
+</head>
+<div class="header">
+    <div class="logo">
+    </div>
+    <div id="profile">
+        <span>리뷰어님</span>
+        <button type="button" class="btn1 btn-dark btn-sm">로그아웃</button>
+    </div>
+</div>
+<!--<header>-->
+<!--    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzgtMQ%2FbtrIMB3TwL4%2FIVUalneeG7NlpFHwLeqkb1%2Fimg.png"-->
+<!--         class="header_img">-->
+<!--    <div class="header_box">-->
+<!--        <h4 class="nav-item">-->
+<!--            <a class="nav-link active" href="#">회원 닉네임 표시</a>-->
+<!--        </h4>-->
+<!--        <button type="button" class="btn1 btn-outline-secondary">로그아웃</button>-->
+<!--    </div>-->
+<!--</header>-->
+<div class="main">
+    <div class="main-container hadow p-3 mb-5 rounded">
+<!--        <button class="button is-info is-outlined">-->
+<!--            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp리&nbsp&nbsp&nbsp&nbsp&nbsp뷰&nbsp&nbsp&nbsp&nbsp&nbsp작&nbsp&nbsp&nbsp&nbsp&nbsp성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-->
+<!--        </button>-->
+        <div class="main_img">
+            <div class="item1">
+                <img src="http://img.newspim.com/content/image/2015/10/28/20151028000034_0.jpg" alt="a1"
+                     class="img-thumbnail">
+            </div>
+            <div class="item2">
+                <div class="text_box1">
+                    <h4 class="text_1">웹툰 제목</h4>
+                </div>
+                <div class="text_box2">
+                    <h1 class="text_2">유미의 세포들</h1>
+                </div>
+                <div class="QW">
+                    <h4 class="text_3">연&nbsp재&nbsp중</h4>
+                </div>
+                <div class="wtbutton">
+                    <button type="button" class="btn btn-success btn-lg">
+                        &nbsp&nbsp&nbsp&nbsp&nbsp웹&nbsp 툰&nbsp&nbsp 보&nbsp 러&nbsp 가&nbsp 기&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+            </div>
+            <div class="item3"></div>
+        </div>
+        <button type="button" class="btn btn-outline-success">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp리&nbsp&nbsp&nbsp&nbsp&nbsp뷰&nbsp&nbsp&nbsp&nbsp&nbsp작&nbsp&nbsp&nbsp&nbsp&nbsp성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </button>
+        <div class="review_container">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" onclick="window.location.href='/detail/62e8bada0cc9270c54c5eb47'">
+                        <label class="review_1">고냠미</label>
+                        <label class="review_2">⭐⭐⭐⭐⭐</label>
+                        <label class="review_3"> 네가 고양이라 다행이야 </label>
+                        <label class="review_4">2000.02.11</label>
+                        <div class="box2">
+                            테스트용 텍스트
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <label class="review_1">고냠미</label>
+                        <label class="review_2">⭐⭐⭐⭐⭐</label>
+                        <label class="review_3"> 네가 고양이라 다행이야 </label>
+                        <label class="review_4">2000.02.11</label>
+                        <div class="box2">
+                             테스트용 텍스트
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <label class="review_1">고냠미</label>
+                        <label class="review_2">⭐⭐⭐⭐⭐</label>
+                        <label class="review_3"> 네가 고양이라 다행이야 </label>
+                        <label class="review_4">2000.02.11</label>
+                        <div class="box2">
+                             테스트용 텍스트
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <article class="media">
+<!--                    <div class="media-left">-->
+<!--                        <figure class="image is-64x64">-->
+<!--                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
+<!--                        </figure>-->
+<!--                    </div>-->
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong class="box_text1">유미</strong> <small>⭐⭐⭐⭐⭐</small> <small>#유미를 보고 암세포가 암에 걸려 사라졌습니다</small> <small class="small3">2022.01.02</small>
+                                <br>
+                                테스트용 텍스트
+
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="box">
+                <article class="media">
+<!--                    <div class="media-left">-->
+<!--                        <figure class="image is-64x64">-->
+<!--                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
+<!--                        </figure>-->
+<!--                    </div>-->
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>유미</strong> <small>⭐⭐⭐⭐⭐</small> <small>#유미를 보고 암세포가 암에 걸려 사라졌습니다</small> <small>2022.01.02</small>
+                                <br>
+                                 테스트용 텍스트
+
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="box">
+                <article class="media">
+<!--                    <div class="media-left">-->
+<!--                        <figure class="image is-64x64">-->
+<!--                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
+<!--                        </figure>-->
+<!--                    </div>-->
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>유미</strong> <small>⭐⭐⭐⭐⭐</small> <small>#유미의 세포를 보고 암세포가 암에 걸려 사라졌습니다</small> <small>2022.01.02</small>
+                                <br>
+                                테스트용 텍스트
+
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<!--<footer></footer>-->
+<body>
+
+</body>
+</html>

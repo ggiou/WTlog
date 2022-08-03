@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+<title>이유나 - 회원가입</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <style>
+    *{
+      font-family: 'Gowun Dodum', sans-serif;
+    }
+      body{
+      background-color: ivory;
+      min-height: 100vh;
+    }
+      .logo {
+        width: 210px;
+        height: 65px;
+
+        margin: 50px auto 0px auto;
+
+        background-image: url('로고_WT.png');
+        background-position: center;
+        background-size: cover;
+      }
+      .input-form {
+      max-width: 680px;
+
+      margin-top: 30px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+      .mybtns {
+        width: 200px;
+        margin: 20px auto 0PX auto;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .mybtns > button {
+        margin-right: 10px;
+      }
+    </style>
+</head>
+<body>
+<div class="signup">
+    <div class="logo"></div>
+    <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+            <h4 class="mb-3">회원가입</h4>
+            <form class="validation-form" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name">이름</label>
+                        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            이름을 입력해주세요.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nickname">닉네임</label>
+                        <input type="text" class="form-control" id="nickname" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            닉네임을 입력해주세요.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" id="id" placeholder="아이디 입력" required>
+                        <div class="invalid-feedback">
+                            아이디를 입력해주세요.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pw">PW</label>
+                        <input type="text" class="form-control" id="pw" placeholder="비밀번호 입력" required>
+                        <div class="invalid-feedback">
+                            비밀번호를 입력해주세요.
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="비밀번호 확인"
+                               aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">중복확인</button>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <select class="form-select" id="floatingSelectGrid"
+                                        aria-label="Floating label select example">
+                                    <option selected>---성별 선택---</option>
+                                    <option value="1">여성</option>
+                                    <option value="2">남성</option>
+                                </select>
+                                <label for="floatingSelectGrid">성별</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <select class="form-select" id="floatingSelectGrid"
+                                        aria-label="Floating label select example">
+                                    <option selected>---연령대 선택---</option>
+                                    <option value="1">10대</option>
+                                    <option value="2">20대</option>
+                                    <option value="3">30대</option>
+                                    <option value="3">40대</option>
+                                    <option value="3">50대</option>
+                                    <option value="3">60대</option>
+                                </select>
+                                <label for="floatingSelectGrid">나이</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="mybtns">
+    <button onclick="" type="button" class="btn btn-success">회원가입</button>
+    <button onclick="" type="button" class="btn btn-outline-success">취소</button>
+</div>
+</body>
+</html>
