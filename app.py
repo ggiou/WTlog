@@ -165,9 +165,14 @@ def webtoon_post():
 #웹툰 리뷰 상세페이지 열기
 @app.route("/detail/<review_id>")
 def move_detail(review_id):
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])['id']
+    except:
+        payload=""
     review = db.reviews.find_one({'_id': ObjectId(review_id)})
     toon = db.toons.find_one({'title': review['toon_id']})
-    return render_template('detail.html', post=review, toon=toon)
+    return render_template('detail.html', post=review, toon=toon, user_id=payload)
 
 #웹툰 리뷰 삭제하기
 @app.route("/delete/<review_id>")
