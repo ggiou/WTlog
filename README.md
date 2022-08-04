@@ -16,7 +16,7 @@ WTlog & 나만 알고 싶은 웹툰을 추천하며 서로 소통할 수 있는 
 ### 3. 사용 기술
 `Back-end`
 - Pymongo
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/></a>
+- <img src="https://img.shields.io/badge/Python-#3776AB?style=flat-square&logo=Python&logoColor=white"/></a>
 - Flask
 - Jinja
 - JWT
@@ -66,6 +66,10 @@ WTlog & 나만 알고 싶은 웹툰을 추천하며 서로 소통할 수 있는 
 ![화면 캡처 2022-08-04 223815](https://user-images.githubusercontent.com/110371892/182863219-a2295274-c055-4cd2-a60e-463124ddc08b.png)
 
 ## 6. 구현 기능
++로그인, 회원가입
++웹툰, 리뷰 등록
++해당 웹툰 바로가기
++리뷰 상세페이지
 
 ## 7. Tools
 
