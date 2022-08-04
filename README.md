@@ -70,3 +70,11 @@ WTlog & 나만 알고 싶은 웹툰을 추천하며 서로 소통할 수 있는 
 
 <a href="https://velog.io/@colorful-stars" target="_blank"><img src="https://img.shields.io/badge/Velog-20c997?style=flat-square&logo=Vimeo&logoColor=white"/></a>
 
+## 8. 프로젝트 관련 주소
+- 프로젝트 데모영상 : https://youtu.be/8vljBnajuo8
+
+- 웹사이트 링크 : http://prscsl-sr.shop/
+
+- github : https://github.com/webtooon/WTlog
+
+- S.A : https://yuna99.tistory.com/2
