@@ -85,6 +85,84 @@ def check_dup():
     exists = bool(db.users.find_one({"username": username_receive}))
     return jsonify({'result': 'success', 'exists': exists})
 
+#리뷰 등록
+@app.route("/sub", methods=["POST"])
+def review_post():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    except:
+        payload=None
+    title_receive = request.form['title_give']
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+    date_receive = request.form["date_give"]
+    toon_id = request.form["toonId_give"]
+
+    doc = {
+        'id': payload['id'],
+        'title':title_receive,
+        'star':star_receive,
+        'review':comment_receive,
+        "date": date_receive,
+        "toon_id":toon_id
+    }
+
+    db.reviews.insert_one(doc)
+
+    return jsonify({"result": "success","msg":"저장 완료!"})
+
+#리뷰작성 페이지 속 이미지
+@app.route('/sub/<title>')
+def sub(title):
+    webtoon_list = db.toons.find_one({'title':title})
+    return render_template('sub.html', WT=webtoon_list)
+
+#웹툰 등록 페이지
+@app.route('/title')
+def title():
+   return render_template('title.html')
+
+#웹툰 등록 페이지 url 중복확인
+@app.route('/Webtoon/check_dup', methods=['POST'])
+def web_check_dup():
+    url_receive = request.form['url_give']
+    exists = bool(db.toons.find_one({"url": url_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
+
+#웹툰 등록
+@app.route("/Webtoon/title", methods=["POST"])
+def webtoon_post():
+    url_receive = request.form['url_give']
+    title_receive = request.form['title_give']
+    serialization_receive = request.form['serialization_give']
+    date_receive = request.form["date_give"]
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get(url_receive, headers=headers)
+
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    og_image = soup.select_one('meta[property="og:image"]')
+
+    image = og_image['content']
+
+
+    doc = {
+        "url":url_receive,
+        "img": image,
+        "title": title_receive,
+        "ser": serialization_receive,
+        "date": date_receive
+    }
+
+    db.toons.insert_one(doc)
+
+    return jsonify({'result': 'success','msg':'저장 완료'})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+    
+    
