@@ -20,9 +20,11 @@ WTlog & 나만 알고 싶은 웹툰을 추천하며 서로 소통할 수 있는 
 - JWT
 
 `Front-end`
-- JQuery 3.5.1
-- HTML, CSS, Javascript
-- Bootstrap
+<img src="https://img.shields.io/badge/jQuery-0769AD?style=flat-square&logo=jQuery&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=Bootstrap&logoColor=white"/></a>
 
 `deploy`
 - AWS EC2 (Ubuntu 18.04 LTS)
