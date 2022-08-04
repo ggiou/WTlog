@@ -162,6 +162,24 @@ def webtoon_post():
     return jsonify({'result': 'success','msg':'저장 완료'})
 
 
+#웹툰 리뷰 상세페이지 열기
+@app.route("/detail/<review_id>")
+def move_detail(review_id):
+    review = db.reviews.find_one({'_id': ObjectId(review_id)})
+    toon = db.toons.find_one({'title': review['toon_id']})
+    return render_template('detail.html', post=review, toon=toon)
+
+#웹툰 리뷰 삭제하기
+@app.route("/delete/<review_id>")
+def delete(review_id):
+    toon_id = db.reviews.find_one({'_id': ObjectId(review_id)})['toon_id']
+    db.reviews.delete_one({'_id': ObjectId(review_id)})
+    return redirect(url_for( 'review',title = toon_id))
+
+
+
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
     
