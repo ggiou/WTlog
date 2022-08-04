@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="plugins/cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+
+    <title>WTlog</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .header{
+            background-color: #FFFFF0;
+            height: 200px;
+            width: 100%;
+            padding: 30px;
+
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .logo{
+            height: 70px;
+            width: 210px;
+
+            background-image: url('/static/logo.png');
+            background-position: center;
+            background-size: 210px 70px;
+
+        }
+        #profile{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #profile > span{
+            margin-right: 20px;
+        }
+
+        #review {
+            margin-bottom: 50px;
+        }
+
+        .box{
+            padding: 50px 0 200px 0;
+            background-color: #FFFFF0;
+        }
+
+        .main{
+            width: 95%;
+            max-width: 800px;
+            padding: 40px;
+
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-color: white;
+            box-shadow: 0px 0px 3px 0px gray;
+        }
+
+        .info{
+            width: 100%;
+            padding: 10px;
+
+            display: flex;
+            flex-direction: row;
+
+            background-color: white;
+        }
+
+        .info > div{
+            width: 100%;
+            padding: 25px;
+            background-color: white;
+        }
+
+        .info > button{
+            height: 40px;
+            width: 250px;
+        }
+
+        .ser{
+            border: 2px solid orangered;
+            width: 60px;
+            text-align: center;
+            margin-top: 30px;
+            color: orangered;
+        }
+
+        .end{
+            border: 2px solid black;
+            width: 60px;
+            text-align: center;
+            margin-top: 30px;
+            color: black;
+        }
+        .board{
+            width: 100%;
+
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            background-color: white;
+        }
+
+        #title{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            background-color: white;
+
+        }
+        .edit > span {
+            font-size: 30px;
+            font-weight: bold;
+
+        }
+        .data{
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-top: 3px;
+
+        }
+        .edit{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 3px;
+
+            border-bottom: 1px solid gray ;
+        }
+
+        #review {
+            width: 100%;
+            font-size: 20px;
+            margin-bottom: 30px;
+
+            justify-content: left;
+            padding: 20px;
+        }
+
+    </style>
+    <script>
+        {##delete 클릭시 한번 더 의사를 묻고 확인을 누르면 삭제#}
+        $(document).ready(function (){
+            $('#delete').on('click', function (){
+                if(confirm("정말로 삭제 하시겠습니까?")) {
+                    location.href = '/delete/{{ post._id }}'
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        {#메인으로 돌아가기#}
+        <div class = "logo" onclick="window.location.href='/'">
+        </div>
+        <div id="profile">
+            <span>리뷰어님</span>
+            <button type="button" class="btn btn-dark btn-sm">로그아웃</button>
+        </div>
+    </div>
+    <div class="box">
+        <div class="main">
+            {#작성하고 있는 리뷰의 웹툰 정보 출력#}
+            <div class="info">
+                <img src="{{ toon['img']}}">
+                <div>
+{#                ser의 값에 따라 연재중인지 완결인지 표시한다#}
+                    <h1>{{ toon['title'] }}</h1>
+                    {% if toon['ser'] =='1' %}
+                        <p class =ser>연재중</p>
+                    {% else  %}
+                        <p class =end>완결</p>
+                    {% endif %}
+                    <h1>{{ post['star'] }}</h1>
+                 </div>
+                <button type="button" class="btn btn-outline-success" onclick="window.open('{{  toon['url'] }}')">웹툰 바로가기</button>
+            </div>
+            <div class="board">
+
+                {#                리뷰 내용 출력#}
+                <div id="title">
+                    <div class = 'edit'>
+                    <span>{{ post['title'] }}</span>
+                        {# 리뷰글의 작성자가 접속자 아이디와 같으면 삭제 버튼을 만든다. #}
+                    {% if user_id==post[id] %}
+                         <button type="button" class="btn btn-success btn-sm" id="delete">삭제</button>
+                    {% endif %}
+                    </div>
+
+                    <div class="data">
+                        <p>{{ post['id'] }}</p>
+                        <p>{{ post['date'] }}</p>
+                    </div>
+                </div>
+                <div id = "review">
+                    <span>{{ post['review'] }}</span>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+{#                    이전 화면으로 되돌아가기 버튼#}
+                    <button onclick="window.location.href=document.referrer" type="button" class="btn btn-success btn-lg">이전</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
