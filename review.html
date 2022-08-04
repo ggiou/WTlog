@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>웹툰 리뷰 리스트</title>
+
+    <!--    폰트적용-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+
+
+    <!--    bulma css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        .header {
+            background-color: #fffff0;
+            height: 150px;
+            width: 100%;
+            padding: 30px;
+
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 70px;
+            width: 210px;
+
+            background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzgtMQ%2FbtrIMB3TwL4%2FIVUalneeG7NlpFHwLeqkb1%2Fimg.png');
+            background-position: center;
+            background-size: 210px 70px;
+
+        }
+
+        #profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #profile > span {
+            margin-right: 50px;
+        }
+
+        .main {
+            background: #fffff0;
+            padding-top: 100px;
+        }
+
+        .main-container {
+            width: 90%;
+            height: 100%;
+            margin: 100px auto 0px auto;
+            background-color: white;
+            box-shadow: 0px 0px 3px 0px gray;
+            background-clip: padding-box;
+        }
+
+        .main_img {
+            display: grid;
+            width: 1700px;
+            margin: 60px auto 0px auto;
+            grid-template-columns: 5fr 7fr 5fr;
+            transition: all 0.2s linear;
+        }
+
+        .main_img:hover img {
+        }
+
+        .item1 {
+            text-align: center;
+            display: flex;
+            justify-content: center
+            transition: all 0.2s linear;
+        }
+
+        .item1:hover img {
+            transform: scale(1.1);
+        }
+
+        .item2 {
+            position: relative;
+            justify-content: flex-end;
+
+
+        }
+
+        .item3 {
+        }
+
+
+        .img-thumbnail {
+            max-width: 1000px;
+            width: 90%;
+            object-fit: cover;
+        }
+
+
+        .text_box1 {
+            width: 90%;
+            height: 40px;
+            margin: auto;
+            position: relative;
+            top: 5%;
+            line-height: 200px;
+        }
+
+        .text_box2 {
+            width: 90%;
+            height: 100px;
+            margin: auto;
+            position: relative;
+            top: 15%;
+            line-height: 200px;
+        }
+
+        .QW {
+            width: 90%;
+            height: 40px;
+            margin: auto;
+            position: relative;
+            top: 17%;
+            line-height: 200px;
+        }
+
+        .wtbutton {
+            width: 40%;
+            height: 50px;
+            position: relative;
+            top: 22%;
+            margin-right: 10px;
+
+        }
+
+        .text_1 {
+            font-weight: bold;
+            font-size: 35px;
+
+
+        }
+
+        .text_2 {
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        .text_3 {
+            font-weight: bold;
+            font-size: 35px;
+        }
+
+        .review_container {
+            max-width: 1500px;
+            width: 90%;
+            margin: 50px auto 0px auto;
+            position: relative;
+        }
+
+        .btn1 {
+        }
+
+        .btn {
+            display: block;
+            position: relative;
+            top: 40px;
+            margin: auto;
+            border-radius: 7px;
+        }
+
+        .box {
+            margin-top: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 2px 0px gray;
+            border-style: groove;
+            border-width: 1px;
+        }
+
+        .box_text1 {
+            font-size: 25px;
+            font-weight: bolder
+        }
+
+        .small3 {
+            float: right;
+        }
+
+
+    </style>
+
+    <script>
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = "/login"
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <div class="logo" onclick="window.location.href = '/'">
+    </div>
+    <div id="profile">
+        <span>리뷰어님</span>
+        <button type="button" class="btn1 btn-dark btn-sm" onclick="sign_out()">로그아웃</button>
+    </div>
+</div>
+<div class="main">
+    <div class="main-container hadow p-3 mb-5 rounded">
+        <div class="main_img" id="main">
+            <div class="item1">
+                <img src="{{ weptoon2.img }}" alt="a1"
+                     class="img-thumbnail">
+            </div>
+            <div class="item2">
+                <div class="text_box1">
+                    <h4 class="text_1">웹툰 제목</h4>
+                </div>
+                <div class="text_box2">
+                    <h1 class="text_2">{{ weptoon2.title }}</h1>
+                </div>
+                <div class="QW">
+                    {% if weptoon2.ser ==1 %}
+                        <h4 class="text_3">연재중</h4>
+                    {% else %}
+                        <h4 class="text_3">완결</h4>
+                    {% endif %}
+                </div>
+                <div class="wtbutton">
+                    <button type="button" class="btn btn-success btn-lg">
+                        &nbsp&nbsp&nbsp&nbsp&nbsp웹&nbsp 툰&nbsp&nbsp 보&nbsp 러&nbsp 가&nbsp 기&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+            </div>
+            <div class="item3"></div>
+        </div>
+        <button type="button" class="btn btn-outline-success"
+                onclick="window.location.href='/sub/{{ weptoon2.title }}'">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp리&nbsp&nbsp&nbsp&nbsp&nbsp뷰&nbsp&nbsp&nbsp&nbsp&nbsp작&nbsp&nbsp&nbsp&nbsp&nbsp성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </button>
+        <div class="review_container" id="review">
+            {% for review3 in review2 %}
+                <div class="box" onclick="window.location.href='/detail/{{ review3._id }}'">
+                    <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    {% set name = review3.title %}
+                                    {% set star = review3.star %}
+                                    {% set id = review3.id %}
+                                    {% set date = review3.date %}
+                                    {% set review = review3.review %}
+                                    <strong class="box_text1">{{ name }}</strong> <small>{{ star }}</small>
+                                    <small>#{{ id }}</small> <small class="small3">{{ date }}</small>
+                                    <br>{{ review }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+<body>
+
+</body>
+</html>
