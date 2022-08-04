@@ -23,7 +23,6 @@ WTlog & 나만 알고 싶은 웹툰을 추천하며 서로 소통할 수 있는 
 `Front-end`
 - JQuery 3.5.1
 - HTML, CSS, Javascript
-- Bulma
 - Bootstrap
 
 `deploy`
