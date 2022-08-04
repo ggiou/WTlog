@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>WTlog</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        li {
+            list-style: none;
+            padding-left: 0px;
+
+        }
+
+        .header {
+            height: 200px;
+            width: 100%;
+            padding: 30px;
+
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 70px;
+            width: 210px;
+
+            background-image: url('log.png');
+            background-position: center;
+            background-size: 210px 70px;
+        }
+
+        #profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #profile > span {
+            margin-right: 20px;
+        }
+
+        input {
+            width: 397px;
+            padding: 5px;
+            border: 0px;
+            outline: none;
+            margin-top: 4px;
+            font-size: 14px;
+            float: left;
+
+        }
+
+        .wt-search-box {
+            width: 465px;
+            height: 46px;
+            border: 4px solid green;
+            background-color: green;
+
+            margin: 0 auto;
+
+            margin-bottom: 10px;
+
+
+        }
+
+        .wt-add-title {
+            display: flex
+        }
+
+        .wt-type {
+            width: 200px;
+            /*border: 1px solid white;*/
+            margin-left: 200px;
+
+
+            font-weight: bolder;
+            font-size: 30px;
+
+
+        }
+
+        .wt-add-box {
+            width: 100px;
+            height: 40px;
+            margin-left: 840px;
+
+
+        }
+
+        .big-box {
+            width: 75%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 10px;
+
+        }
+
+
+        .mytitle > button {
+            width: 200px;
+            height: 50px;
+
+            background-color: transparent;
+            color: white;
+
+            border-radius: 50px;
+            border: 1px solid white;
+
+            margin-top: 10px;
+        }
+
+        .mytitle > button:hover {
+            border: 2px solid white;
+        }
+
+        .mycomment {
+            color: gray;
+        }
+
+        .mycards {
+            margin: 20px auto 0px auto;
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
+        }
+
+        .mybtns {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+        .mybtns > button {
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+          listing();
+        });
+
+        function listing() {
+            $('#cards-box').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/webtoon',
+                data: {},
+                success: function (response) {
+                    let rows = response['webtoons']
+                    for(let i = 0; i < rows.length; i++) {
+                        let image = rows[i]['image']
+                        let star = rows[i]['star']
+                        let comment = rows[i]['comment']
+
+                        let star_image = '⭐'.repeat(star)
+
+                        let temp_html = `<div class="col">
+                                            <div class="card h-100">
+                                                <img src="${image}"
+                                                     class="card-img-top">
+                                                <div class="card-body">
+                                                    <p>${star_image}</p>
+                                                    <p class="mycomment">${comment}</p>
+                                                    <button onclick="to_test3()" class="btn btn-success">리 뷰 작 성</a>
+                                                </div>
+                                            </div>
+                                        </div>`
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            })
+        }
+
+        function posting() {
+            let url = $('#url').val()
+            let star = $('#star').val()
+            let comment = $('#comment').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/webtoon',
+                data: {url_give: url, star_give: star, comment_give: comment},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+        function open_box(){
+            $('#post-box').show()
+        }
+        function close_box(){
+            $('#post-box').hide()
+        }
+
+
+        function to_title(){
+            window.location.href="/title"
+        }
+
+        function to_login() {
+            window.location.href = "/login"
+        }
+
+        function to_detail() {
+            window.location.href = "/detail"
+        }
+
+        function to_test3() {
+            window.location.href = "/test3"
+        }
+    </script>
+</head>
+
+<body style="background-color: #FFFFF0">
+<div class="header">
+    <div class="logo" id="logos">
+    </div>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+<!-- ------------------------------ [edit] -------------------------------- -->
+        {% if g.user %}
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="#">{{ g.user.username }} (로그아웃)</a>
+            </li>
+        </ul>
+        {% else %}
+<!-- ---------------------------------------------------------------------- -->
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
+            </li>
+        </ul>
+<!-- ------------------------------ [edit] -------------------------------- -->
+        {% endif %}
+<!-- ---------------------------------------------------------------------- -->
+    </div>
+    <div id="profile">
+        <span>리뷰어님</span>
+        <button onclick="to_login()" class="btn btn-dark btn-sm" id="login">로그인</button>
+    </div>
+</div>
+<div class="mypost" id="post-box">
+    <div class="form-floating mb-3">
+        <input id="url" type="email" class="form-control" placeholder="name@example.com">
+        <label>웹툰 URL</label>
+    </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">별점</label>
+        <select class="form-select" id="star">
+            <option selected>-- 선택하기 --</option>
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
+    </div>
+    <div class="form-floating">
+        <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+        <label for="floatingTextarea2">제목</label>
+    </div>
+    <div class="mybtns">
+        <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+        <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+    </div>
+</div>
+
+<button onclick="open_box()">웹툰 기록하기</button>
+
+<div class="wt-search-box">
+    <input id="search-text" class="wt-write-contents" type="text" , placeholder="찾기 원하는 웹툰을 입력하십시오.">
+    <button id="search" class="btn btn-success">
+        검 색
+    </button>
+</div>
+
+<div class="wt-add-title">
+    <div class="wt-type">Webtoon TYPE</div>
+    <div class="wt-add-box">
+        <button onclick="to_title()" class="btn btn-success">
+            Webtoon+
+        </abutton>
+    </div>
+</div>
+<div class="mytitle">
+    <button onclick="open_box()">웹툰 기록하기</button>
+</div>
+
+<div class="big-box">
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
